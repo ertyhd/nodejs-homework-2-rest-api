@@ -53,8 +53,6 @@ router.post("/", async (req, res, next) => {
     if (error) {
       throw HttpError(400, error.message);
     }
-    // const result = await contacts.addContact(req.body);
-    // res.status(201).json(result);
   } catch (error) {
     next(error);
   }
