@@ -13,6 +13,11 @@ const contactSchema = new Schema(
     email: { type: String, required: [true, "The email field must be filled"] },
     phone: { type: String, required: [true, "The phone field must be filled"] },
     favorite: { type: Boolean, default: false },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   { versionKey: false }
 );
