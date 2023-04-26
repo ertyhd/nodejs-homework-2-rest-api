@@ -94,13 +94,11 @@ const updateAvatar = async (req, res) => {
   const avatarName = `${_id}_${filename}`;
   const resultUpload = path.join(avatarDir, avatarName);
 
-  Jimp.read(tempUpload, (err, image) => {
-    if (err) throw err;
-    image
-      .resize(250, 250) // resize
-      .quality(60) // set JPEG quality
-      .write(resultUpload); // save
-  });
+  const optimizeAvatar = await Jimp.read(tempUpload);
+  optimizeAvatar
+    .resize(250, 250) // resize
+    .quality(60) // set JPEG quality
+    .write(resultUpload); // save
   // await fs.rename(tempUpload, resultUpload);
   await fs.unlink(tempUpload);
 
